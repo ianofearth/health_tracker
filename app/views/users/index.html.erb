@@ -1,0 +1,11 @@
+<h1>welcome</h1>
+
+<% if current_user %>
+  <%= link_to 'Add Food', new_user_food_path(@user), :class => "btn btn-success" %>
+
+  <% @user.foods.each do |f| %>
+    <p><%= f.name %></p>
+    <p><%= f.calories %></p>
+  <% end %>
+
+<% end %>
