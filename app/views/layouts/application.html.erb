@@ -26,6 +26,11 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right special-color">
+          <% if current_user %>
+          <li><%= link_to @user.email, log_in_path %></li>
+          <% else %>
+            <li><%= link_to "You must log in", log_in_path %></li>
+          <% end %>
 
           <li><%= link_to 'Log In', log_in_path %></li>
           <li><%= link_to 'Register', new_user_path %></li>

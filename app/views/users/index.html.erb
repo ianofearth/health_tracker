@@ -1,11 +1,8 @@
-<h1>welcome</h1>
+<h1 class="page-header text-center">Welcome to Health Tracker</h1>
 
 <% if current_user %>
-  <%= link_to 'Add Food', new_user_food_path(@user), :class => "btn btn-success" %>
-
-  <% @user.foods.each do |f| %>
-    <p><%= f.name %></p>
-    <p><%= f.calories %></p>
-  <% end %>
-
+  <%= link_to 'Add Food', new_user_food_path(@user), id: "add_food_link", :class => "btn btn-success", remote: true %>
+  <ul id ="foods_list">
+    <%= render(@user.foods) %>
+  </ul>
 <% end %>
