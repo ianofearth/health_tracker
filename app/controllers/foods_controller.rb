@@ -1,9 +1,4 @@
 class FoodsController < ApplicationController
-  def show
-    @user = User.find(params[:user_id])
-    @food = Food.find(params[:id])
-  end
-
   def new
     @user = User.find(params[:user_id])
     @food = @user.foods.new
@@ -51,6 +46,11 @@ class FoodsController < ApplicationController
       format.html { redirect_to user_foods_path(@user, @food) }
       format.js
     end
+  end
+
+  def sum
+    @user = User.find(params[:id])
+    @sum = @user.foods.sum(:calories)
   end
 
   private

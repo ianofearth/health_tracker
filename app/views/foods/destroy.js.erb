@@ -1,1 +1,2 @@
 $('#food_item_<%= @food.id %>').remove();
+$('#calorie_total').text('<%= @user.foods.sum(:calories) %>')

@@ -1,1 +1,2 @@
 $('#edit_food_link').hide().after('<%= j render("form") %>')
+$('#calorie_total').text('<%= @user.foods.sum(:calories) %>')

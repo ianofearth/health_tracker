@@ -1,3 +1,4 @@
 $('#edit_food_<%= @food.id %>').remove();
 $('#food_item_<%= @food.id %>').remove();
 $('#foods_list').append('<%= j render(@food) %>')
+$('#calorie_total').text('<%= @user.foods.sum(:calories) %>')

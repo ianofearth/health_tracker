@@ -5,4 +5,5 @@
   <ul id ="foods_list">
     <%= render(@user.foods) %>
   </ul>
+  <h2>Total Calories Consumed: <span id="calorie_total"><%= @user.foods.sum(:calories) %></span></h2>
 <% end %>
