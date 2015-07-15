@@ -43,7 +43,14 @@ class FoodsController < ApplicationController
   end
 
   def destroy
-
+    @user = User.find(params[:user_id])
+    @food = Food.find(params[:id])
+    @food.destroy
+    flash[:notice] = @food.name + " has been removed."
+    respond_to do |format|
+      format.html { redirect_to user_foods_path(@user, @food) }
+      format.js
+    end
   end
 
   private
