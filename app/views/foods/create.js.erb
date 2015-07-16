@@ -1,4 +1,5 @@
 $('#new_food').remove();
 $('#add_food_link').show();
-$('#foods_list').append('<%= j render(@food) %>')
-$('#calorie_total').text('<%= @user.foods.sum(:calories) %>')
+$('#foods_list').append('<%= j render(@food) %>');
+$('#calorie_total').text('<%= @user.foods.sum(:calories) %>');
+$('#calorie_net').text('<%= @user.foods.sum(:calories) - @user.exercises.sum(:burned) %>');

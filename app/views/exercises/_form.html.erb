@@ -1,0 +1,5 @@
+<%= simple_form_for [@user, @exercise], remote: true do |f| %>
+<%= f.input :name %>
+<%= f.input :burned %>
+<%= f.button :submit %>
+<% end %>

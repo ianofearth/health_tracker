@@ -1,2 +1,3 @@
 $('#food_item_<%= @food.id %>').remove();
-$('#calorie_total').text('<%= @user.foods.sum(:calories) %>')
+$('#calorie_total').text('<%= @user.foods.sum(:calories) %>');
+$('#calorie_net').text('<%= @user.foods.sum(:calories) - @user.exercises.sum(:burned) %>');

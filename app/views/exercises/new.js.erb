@@ -1,0 +1,3 @@
+$('#add_exercise_link').hide().after('<%= j render("form") %>');
+$('#burned_total').text('<%= @user.exercises.sum(:burned) %>');
+$('#calorie_net').text('<%= @user.foods.sum(:calories) - @user.exercises.sum(:burned) %>');

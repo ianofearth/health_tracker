@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :excercises
+    resources :exercises
   end
 end

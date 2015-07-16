@@ -28,12 +28,12 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
     if @food.update(food_params)
       flash[:notice] = @food.name + ' has been updated.'
+      respond_to do |format|
+        format.html { redirect_to user_foods_path(@user, @food) }
+        format.js
+      end
     else
       render :edit
-    end
-    respond_to do |format|
-      format.html { redirect_to user_foods_path(@user, @food) }
-      format.js
     end
   end
 
@@ -46,11 +46,6 @@ class FoodsController < ApplicationController
       format.html { redirect_to user_foods_path(@user, @food) }
       format.js
     end
-  end
-
-  def sum
-    @user = User.find(params[:id])
-    @sum = @user.foods.sum(:calories)
   end
 
   private
