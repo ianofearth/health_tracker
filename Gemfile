@@ -26,6 +26,8 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'bootstrap-sass'
 gem 'pry'
 gem 'simple_form'
+gem 'will_paginate'
+gem 'acts_as_list'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

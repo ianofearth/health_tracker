@@ -1,4 +1,10 @@
 class FoodsController < ApplicationController
+  def index
+    @users = User.all
+    @user = User.find(params[:user_id])
+    @foods = User.foods.order('name')
+  end
+
   def new
     @user = User.find(params[:user_id])
     @food = @user.foods.new
@@ -46,6 +52,13 @@ class FoodsController < ApplicationController
       format.html { redirect_to user_foods_path(@user, @food) }
       format.js
     end
+  end
+
+  def sort
+    params[:food].each_with_index do |id, index|
+      Food.update_all({name: index+1}, {id: id})
+    end
+    render nothing: true
   end
 
   private

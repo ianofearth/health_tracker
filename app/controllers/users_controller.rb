@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @user = current_user
+    # @foods = User.foods.order('name')
   end
 
   def show
@@ -42,6 +43,13 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:notice] = @user.name + "successfully deleted!"
     redirect_to users_path
+  end
+
+  def sort
+    params[:food].each_with_index do |id, index|
+      Food.update_all({name: index+1}, {id: id})
+    end
+    render nothing: true
   end
 
   private

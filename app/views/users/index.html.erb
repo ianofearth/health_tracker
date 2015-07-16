@@ -4,8 +4,8 @@
 <div class="row">
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <%= link_to 'Add Food', new_user_food_path(@user), id: "add_food_link", :class => "btn btn-success", remote: true %>
-    <ul id ="foods_list">
-      <%= render(@user.foods) %>
+    <ul id ="foods_list"> <%= link_to "sort", users_path(direction: 'asc') %>
+      <%= render(@user.foods.order('name ' + (params[:food] ? 'asc' : 'desc'))) %>
     </ul>
     <h2>Total Calories Consumed: <span id="calorie_total"><%= @user.foods.sum(:calories) %></span></h2>
   </div>
@@ -18,4 +18,25 @@
   </div>
 </div>
 <h2 class="text-center">Net Calories: <span id="calorie_net"><%= @user.foods.sum(:calories) - @user.exercises.sum(:burned) %></span></h2>
+
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <table class="pretty" align="center">
+      <tr>
+        <th>Exercise</th>
+        <th>Calories Burned</th>
+      </tr>
+      <% for exercise in @user.exercises %>
+      <tr>
+        <td><%= exercise.name %></td>
+        <td><%= exercise.burned %></td>
+        <td><%= link_to "Edit", edit_user_exercise_path(@user, exercise), id: "edit_exercise_link", remote: true %> |
+          <%= link_to "Remove", user_exercise_path(@user, exercise), id: "delete_exercise_link", remote: true, data: {method: 'delete', confirm:'are you sure?'} %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
 <% end %>

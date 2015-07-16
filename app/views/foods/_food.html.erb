@@ -1,6 +1,7 @@
 <li id="food_item_<%= food.id %>">
   <p><%= food.name %></p>
   <p><%= food.calories %></p>
-  <%= link_to "Edit", edit_user_food_path(@user, food), id: "edit_food_link", remote: true %>
+  <span class="handle">[drag]</span>
+  <%= link_to "Edit", edit_user_food_path(@user, food), id: "edit_food_link", remote: true %> |
   <%= link_to "Remove", user_food_path(@user, food), id: "delete_food_link", remote: true, data: {method: 'delete', confirm:'are you sure?'} %>
 </li>
